@@ -2,17 +2,18 @@ import "./rightbar.css"
 import { Users } from "../../dummyData"
 import Online from "../online/Online"
 function Rightbar({profile}) {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
 function HomeRightBar(){
   return(
     <>
     <div className="birthdayContainer">
-          <img className="birthdayImage" src="assets/gift.png" alt="" />
+          <img className="birthdayImage" src={`${PF}gift.png`} alt=""/>
           <span className="birthdayText">
             <b>honey singh</b> and <b>3 other friends </b> have a birthday today.
           </span>
         </div>
-        <img src="assets/ad.png" alt="" className="rightbarAd" />
+        <img src={`${PF}ad.png`} className="rightbarAd" />
         <h4 className="rightbarTitle">online friends</h4>
         <ul className="rightbarFriendList">
          {Users.map((u)=>(
@@ -44,19 +45,19 @@ function ProfileRightbar(){
     <h4 className="rightbarTitle">User friends</h4>
     <div className="rightbarFollowings">
       <div className="rightbarFollowing">
-        <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImage" />
+        <img src={`${PF}person/1.jpeg`} alt="" className="rightbarFollowingImage" />
         <span className="rightbarFollowingName">ricky singh</span>
       </div>
       <div className="rightbarFollowing">
-        <img src="assets/person/3.jpeg" alt="" className="rightbarFollowingImage" />
+        <img src={`${PF}person/3.jpeg`} alt="" className="rightbarFollowingImage" />
         <span className="rightbarFollowingName">ricky singh</span>
       </div>
       <div className="rightbarFollowing">
-        <img src="assets/person/4.jpeg" alt="" className="rightbarFollowingImage" />
+        <img src={`${PF}person/4.jpeg`} alt="" className="rightbarFollowingImage" />
         <span className="rightbarFollowingName">ricky singh</span>
       </div>
       <div className="rightbarFollowing">
-        <img src="assets/person/6.jpeg" alt="" className="rightbarFollowingImage" />
+        <img src={`${PF}person/6.jpeg`} alt="" className="rightbarFollowingImage" />
         <span className="rightbarFollowingName">ricky singh</span>
       </div>
     </div>

@@ -1,26 +1,41 @@
 import "./post.css"
 import { MoreVert } from "@material-ui/icons"
-import { Users } from "../../dummyData"
-import { useState } from "react"
+// import { Users } from "../../dummyData"
+import { useState,useEffect } from "react"
+import request from "../../axiosConfig"
 
 function Post(props) {
     const [like, setLike] = useState(props.post.like)
     const [isLiked, setIsLiked] = useState(false)
+    const [user, setUser] = useState({})
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-function likeHandler(){
-    setLike(isLiked? like-1 : like+1 );
-    setIsLiked(!isLiked)
-}
+    useEffect(()=>{
+        const fetchUser = async() => {
+          try {
+            const res = await request.get('/posts')
+          console.log(res)
+          setUser(res.data)
+          } catch (error) {
+            console.log(error)
+          }
+        };
+        fetchUser();
+    },[])
+
+    function likeHandler() {
+        setLike(isLiked ? like - 1 : like + 1);
+        setIsLiked(!isLiked)
+    }
     return (
         <div className='post'>
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <img src={Users.filter((u) =>
-                            u.id === props.post.userId)[0].profilePicture} alt="" className="postProfileImage" />
+                        <img className="postProfileImage" src= {user.profilePicture || PF+
+                        "person/noAvatar.png"} alt=""  />
                         <span className="postUsername">
-                            {Users.filter((u) =>
-                                u.id === props.post.userId)[0].username}
+                            {user.username}
                         </span>
                         <span className="postDate">{props.post.date}</span>
                     </div>
@@ -30,7 +45,7 @@ function likeHandler(){
                 </div>
                 <div className="postCenter">
                     <span className="postText">{props.post?.desc}</span>
-                    <img className="postImage" src={props.post.photo} alt="" />
+                    <img className="postImage" src={PF + props.post.photo} alt="" />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
