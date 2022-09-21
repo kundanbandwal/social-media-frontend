@@ -1,11 +1,11 @@
-import { useRef } from "react"
-import "./login.css"
+import { useRef } from "react";
+import "./login.css";
+import loginCall from "../../apiCalls"
 
 function Login() {
 const email = useRef();
 const password = useRef();
 function handleClick(e){
-console.log(email.current.value)
   e.preventDefault()
 }
   return (
@@ -31,4 +31,4 @@ console.log(email.current.value)
   )
 }
 
-export default Login
+export default Login;
