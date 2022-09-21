@@ -5,7 +5,7 @@ function Topbar() {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <Link to="/" style={{textDecoration:"none"}}>
+        <Link to="/" style={{textDecoration:"none"}}>         
         <span className="logo">FaceBook</span>
         </Link>
       </div>
@@ -34,7 +34,7 @@ function Topbar() {
                 <span className="topbarIconBadge">2</span>
             </div>
         </div>
-        <img src="/assets/person/3.jpeg" alt="" className="topbarImage" />
+        <img src="/assets/person/7.jpeg" alt="" className="topbarImage" />
       </div>
     </div>
   )
