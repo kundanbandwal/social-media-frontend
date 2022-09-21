@@ -10,7 +10,7 @@ import {
 
 function App() {
   return (
-    < >
+    <>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -26,7 +26,7 @@ function App() {
             <Profile />
           </Route>
         </Switch>
-      </Router>
+      </Router> 
     </>
   );
 }
