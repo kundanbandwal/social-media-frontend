@@ -1,9 +1,8 @@
-import "./rightbar.css"
-import { Users } from "../../dummyData"
-import Online from "../online/Online"
-function Rightbar({profile}) {
+import "./rightbar.css";
+import { Users } from "../../dummyData";
+import Online from "../online/Online";
+function Rightbar({user}) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
 function HomeRightBar(){
   return(
     <>
@@ -13,7 +12,7 @@ function HomeRightBar(){
             <b>honey singh</b> and <b>3 other friends </b> have a birthday today.
           </span>
         </div>
-        <img src={`${PF}ad.png`} className="rightbarAd" />
+        <img src="assets/ad.png" className="rightbarAd" alt=""/>
         <h4 className="rightbarTitle">online friends</h4>
         <ul className="rightbarFriendList">
          {Users.map((u)=>(
@@ -31,15 +30,16 @@ function ProfileRightbar(){
     <div className="rightbarInfo">
       <div className="rightbarInfoItem">
         <span className="rightbarInfoKey">City</span>
-        <span className="rightbarInfoValue">wardha</span>
+        <span className="rightbarInfoValue">{user.city}</span>
       </div>
       <div className="rightbarInfoItem">
         <span className="rightbarInfoKey">From</span>
-        <span className="rightbarInfoValue">India</span>
+        <span className="rightbarInfoValue">{user.from}</span>
       </div>
       <div className="rightbarInfoItem">
         <span className="rightbarInfoKey">Relationship</span>
-        <span className="rightbarInfoValue">Single</span>
+        <span className="rightbarInfoValue">{user.relationship ===1 ?"single" :
+        user.relationship === 2 ? "married" : "-" }</span>
       </div>
     </div>
     <h4 className="rightbarTitle">User friends</h4>
@@ -67,7 +67,7 @@ function ProfileRightbar(){
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {profile?<ProfileRightbar />: <HomeRightBar />}
+        {user ?<ProfileRightbar />: <HomeRightBar />}
       </div>
     </div>
   )
