@@ -1,36 +1,37 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Post from "../post/Post";
 import Share from "../share/Share";
 import "./feed.css";
 import request from "../../axiosConfig"
-function Feed() {
-  const[posts,setPosts]=useState([])
+function Feed({username}) {
+  const [posts, setPosts] = useState([])
 
-  useEffect(()=>{
-    const fetchPosts = async() => {
-      try { 
-        const res = await request.get('/posts')
-        console.log({res})
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = username ? await request.get('/posts/profile/' + username) : 
+        await request.get('/posts/timeline/6320c26207199e962aed9824') ;
+        // console.log(res)
         setPosts(res.data)
-      }catch(e) {
+      } catch (e) {
         console.log(e);
       }
     };
     fetchPosts();
-},[])
+  }, [username])
+  
 
 
   return (
     <div className="feed">
       <div className="feedWrapper">
         <Share />
-        {posts.map((p)=>{
-         return <Post key={p.id} post={p}/>
+        {posts.map((p) => {
+          return <Post key={p._id} post={p} />
         })}
       </div>
     </div>
   )
 }
 
-export default Feed
+export default Feed;
