@@ -9,6 +9,8 @@ import { AuthContext } from "../../context/AuthContext";
 function Feed({username}) {
   const [posts, setPosts] = useState([])
   const {user} = useContext(AuthContext)
+  
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -28,7 +30,7 @@ function Feed({username}) {
   return (
     <div className="feed">
       <div className="feedWrapper">
-        <Share />
+        {(!username || username === user.username) && <Share />}
         {posts.map((p) => {
           return <Post key={p._id} post={p} />
         })}
