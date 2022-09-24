@@ -14,13 +14,8 @@ function Profile() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      try {
         const res = await request.get(`/users?username=${username}`);
-        //   console.log(res)
         setUser(res.data);
-      } catch (error) {
-        console.log(error);
-      }
     };
     fetchUser();
   }, [username]);
