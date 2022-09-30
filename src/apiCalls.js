@@ -10,3 +10,6 @@ import request from "./axiosConfig"
     }
   };
   
+  export const loggedOutCall = async (dispatch)=>{
+    dispatch({ type: "LOGIN_SUCCESS", payload: null });
+  }
