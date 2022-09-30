@@ -2,7 +2,6 @@ import { useState,useEffect } from "react";
 import Post from "../post/Post";
 import Share from "../share/Share";
 import "./feed.css";
-import request from "../../axiosConfig"
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import {fetchPosts} from "../../services/MessangerService"
@@ -15,7 +14,7 @@ function Feed({username}) {
 
   useEffect(() => {
     shareFetchPost()
-    console.log({username, id: user._id})
+    // console.log({username, id: user._id})
   }, [username,user._id]);
   
   return (

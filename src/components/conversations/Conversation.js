@@ -19,7 +19,7 @@ function Conversation({ conversation, currentUser }) {
         console.log(error);
       }
     };
-    // getUser();
+    getUser();
   }, [currentUser, conversation]);
 
   return (
