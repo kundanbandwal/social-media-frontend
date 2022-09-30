@@ -1,6 +1,7 @@
 import "./message.css";
+import {format} from "timeago.js"
 
-function Message({own}) {
+function Message({message,own}) {
   return (
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">
@@ -9,9 +10,9 @@ function Message({own}) {
           src="https://static2.srcdn.com/wordpress/wp-content/uploads/2020/11/Pokemon-Crown-Tundra-Salamance.jpg"
           alt=""
         />
-        <p className="messageText">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p className="messageText">{message.text}</p>
       </div>
-      <div className="messageBottom">1 hour Ago</div>
+      <div className="messageBottom">{format(message.createdAt)}</div>
     </div>
   );
 }
