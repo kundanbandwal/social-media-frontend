@@ -4,7 +4,7 @@ import { useContext, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useState } from "react";
 import request from "../../axiosConfig"
-function Share({fetchPosts}) {
+function Share() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef();
@@ -28,11 +28,7 @@ function Share({fetchPosts}) {
     }
     try {
      await request.post("/posts", newPost);
-    //  window.location.reload();
-    desc.current.value = '';
-    setFile(null);
-    fetchPosts();
-
+     window.location.reload();
     } catch (error) {}
  }
 
