@@ -1,11 +1,21 @@
 import "./topbar.css";
-import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { Search, Person, Chat, Notifications,ExitToApp } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import {loggedOutCall} from "../../apiCalls"
+
 function Topbar() {
+
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const {  dispatch } = useContext(AuthContext);
+
+  const logout = () => {
+    loggedOutCall(
+      dispatch
+    );
+  }
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -41,6 +51,9 @@ function Topbar() {
           <div className="topbarIconItem">
             <Notifications />
             <span className="topbarIconBadge">2</span>
+          </div>
+          <div className="topbarIconItem">
+            <ExitToApp onClick={logout} />
           </div>
         </div>
         <Link to={`/profile/${user.username}`}>
