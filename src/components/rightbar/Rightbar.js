@@ -60,7 +60,7 @@ function Rightbar({ user }) {
         <ul className="rightbarFriendList">
           {Users.map((u) => (
             <Online key={u.id} user={u} />
-          ))}
+            ))}
         </ul>
       </>
     );
