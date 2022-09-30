@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function Login() {
   const email = useRef();
   const password = useRef();
-  const {  isFetching, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -23,7 +23,10 @@ function Login() {
       <div className="loginWrapper">
         <div className="loginLeft">
           <h3 className="loginLogo">FaceBook</h3>
-          <span className="loginDesc">Dont use FaceBook its very useless.</span>
+          <span className="loginDesc">
+            Facebook helps you connect and 
+            share with the people in your life.
+          </span>
         </div>
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>
@@ -50,6 +53,7 @@ function Login() {
               )}
             </button>
             <span className="loginForgot">Forgot Password ?</span>
+            <hr className="loginHr" />
             <Link to={"/register"}>
               <button className="loginRegisterButton">
                 {isFetching ? (
