@@ -31,4 +31,26 @@
 
 .rightbarUsername{
     font-weight: 500;
+    float: left;
 }
+
+.suggetFollowButton{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    border-radius: 5px;
+    padding: 3px 5px;
+    border: none;
+    background-color: #1872f2;  
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.onlineFriend{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+

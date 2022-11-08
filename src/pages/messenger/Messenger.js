@@ -46,7 +46,7 @@ function Messenger() {
       );
     });
   }, [user]);
-
+// console.log(user)
   useEffect(() => {
     const getConversations = async () => {
       try {

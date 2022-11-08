@@ -58,6 +58,7 @@ function Post({ post }) {
           </div>
           <div className="postTopRight">
             <MoreVert />
+            {/* need to add delete post feature */}
           </div>
         </div>
         <div className="postCenter">
