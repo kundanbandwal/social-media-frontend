@@ -1,30 +1,40 @@
 import "./rightbar.css";
-import { Users } from "../../dummyData";
+// import { Users } from "../../dummyData";
 import Online from "../online/Online";
 import { useEffect, useContext } from "react";
 import { useState } from "react";
 import request from "../../axiosConfig";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { Add, Remove } from "@material-ui/icons";
+// import { Add, Remove } from "@material-ui/icons";
 
 function Rightbar({ user }) {
+
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
+  const [suggestedFriends, setSuggestedFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(currentUser.followings.includes(user?.id));
+  // debugger;
+  const isFollow = currentUser.followings.includes(user?._id);
+  const [followed, setFollowed] = useState(isFollow);
+  // console.log({followed, isFollow});
+  
 
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await request.get("/users/friends/" + user._id);
+        const friendList = await request.get("/users/friends/" + currentUser._id);
+        const sfriendList = await request.get(`/users/${currentUser._id}/suggestedFriends`);
         setFriends(friendList.data);
+        setSuggestedFriends(sfriendList.data); 
       } catch (error) {
         console.log(error);
       }
     };
+    setFollowed(isFollow);
     getFriends();
   }, [user]);
+
 
   const handleClick = async () => {
     try {
@@ -58,9 +68,11 @@ function Rightbar({ user }) {
         <img src="assets/ad.png" className="rightbarAd" alt="" />
         <h4 className="rightbarTitle">online friends</h4>
         <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <Online key={u.id} user={u} />
-          ))}
+          {suggestedFriends.map((friend) => (
+            
+            <Online key={friend.id} user={friend} homeUser={currentUser}/>
+            
+            ))}
         </ul>
       </>
     );
@@ -72,9 +84,8 @@ function Rightbar({ user }) {
         {user.username !== currentUser.username && (
           <button className="rightbarFollowButton" onClick={handleClick}>
             {followed ? "Unfollow" : "Follow"}
-            {followed ? <Remove /> : <Add />}
           </button>
-        )}
+         )}
         <h4 className="rightbarTitle">User Information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
@@ -96,7 +107,7 @@ function Rightbar({ user }) {
             </span>
           </div>
         </div>
-        <h4 className="rightbarTitle">User friends</h4>
+        <h4 className="rightbarTitle">User Friends</h4>
         <div className="rightbarFollowings">
           {friends.map((friend) => (
             <Link
@@ -116,7 +127,7 @@ function Rightbar({ user }) {
                 <span className="rightbarFollowingName">{friend.username}</span>
               </div>
             </Link>
-          ))};
+          ))}
         </div>
       </>
     );

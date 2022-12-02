@@ -1,13 +1,22 @@
 import "./message.css";
-import {format} from "timeago.js"
+import { format } from "timeago.js";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
-function Message({message,own}) {
+function Message({ message, own }) {
+  const {user} = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">
         <img
           className="messageImg"
-          src="https://static2.srcdn.com/wordpress/wp-content/uploads/2020/11/Pokemon-Crown-Tundra-Salamance.jpg"
+          src={
+            user.profilePicture
+              ? PF + user.profilePicture
+              : PF + "person/noAvatar.png"
+          }
           alt=""
         />
         <p className="messageText">{message.text}</p>

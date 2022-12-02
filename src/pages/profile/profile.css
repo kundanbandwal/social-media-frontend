@@ -25,7 +25,53 @@
     margin: auto;
     top: 150px;
     border: 3px solid white;
+    cursor: pointer;
 }
+
+/* .my_file{
+    display: none;
+    position: relative;
+    cursor: pointer;
+} */
+
+.addProfilePicIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    margin-left: 52% ;
+    margin-right: 44% ;
+}
+
+.setProfileIcon{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 5px;
+    border: 1px solid transparent;
+    background-color: rgb(222, 216, 216);
+    margin-left: 20px;
+}
+
+.saveCancelIcon{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cancelProfileImg{
+    margin-right: 2%;     
+    cursor: pointer;
+    margin-left: 20%;
+}
+
+.saveProfileImg{
+    margin-left: -1%;
+    cursor: pointer;
+}
+
+
 .profileInfo{
     display: flex;
     flex-direction: column;

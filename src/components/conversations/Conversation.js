@@ -12,8 +12,8 @@ function Conversation({ conversation, currentUser }) {
 
     const getUser = async () => {
       try {
-        const res = await request("/users?userId=" + friendId);
-        // console.log(res)
+        const res = await request.get("/users?userId=" + friendId);
+        console.log({res});
         setUser(res.data);
       } catch (error) {
         console.log(error);
@@ -27,7 +27,9 @@ function Conversation({ conversation, currentUser }) {
       <img
         className="conversationImg"
         src={
-          user?.profilePicture ? PF+ user.profilePicture : PF + "person/noAvatar.png"
+          user?.profilePicture
+            ? PF + user.profilePicture
+            : PF + "person/noAvatar.png"
         }
         alt=""
       />

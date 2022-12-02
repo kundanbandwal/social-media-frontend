@@ -6,6 +6,7 @@
     top: 50px;
 }
 
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -25,14 +26,25 @@
     margin: 0;
     list-style: none;
 }
+
 .sidebarListItem{
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
+
+.sidebarListItem:hover{
+    background-color: #f1f1f1;
+}
+
 .sidebarIcon{
     margin-right: 15px;
 }
+
+.sidebarIcon:hover{
+    background-color: #f1f1f1;
+}
+
 .sidebarListItemText{
     font-size: 700;
 }

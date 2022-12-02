@@ -25,6 +25,11 @@
     color: #1775ee;
     margin-bottom: 10px;
 }
+
+.loginLogo:hover{
+    color: black;
+}
+
 .loginDesc{
     font-size: 24px;
 }
@@ -47,6 +52,7 @@
 .loginInput:focus{
     outline: none;
 }
+
 .loginButton{
     height: 50px;
     border-radius: 10px;
@@ -63,11 +69,18 @@
 .loginButton:disabled{
     cursor: not-allowed;
 }
+.loginButton:hover{
+    background-color: #689ce0;
+}
 
 .loginForgot{
     text-align: center;
     color: #1775ee;
     cursor: pointer;
+}
+
+.loginHr{
+    margin: 20px 0;
 }
 .loginRegisterButton{
     width: 60%;
@@ -80,4 +93,8 @@
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
+    margin-left: 90px;
+}
+.loginRegisterButton:hover{
+    background-color: #8ae478;
 }
