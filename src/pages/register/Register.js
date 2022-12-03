@@ -36,15 +36,6 @@ function Register() {
     }
   };
 
-  const usernameHandler = (e) => {
-  let username = e.target.value;
-  if (username.length > 3) {
-    setUsernameErr("");
-  } else {
-    setUsernameErr("Username Not Valid!");
-  }
-};
-
   const validateEmail = (e) => {
     var email = e.target.value;
     if (validator.isEmail(email)) {
@@ -67,13 +58,12 @@ function Register() {
     }
   };
 
-
   const PasswordAgainHandler = (e) => {
     const passwordAgain = e.target.value;
     if (password.current.value !== passwordAgain) {
       setPassAgainErr("Password Don't Match");
     } else {
-      setPassAgainErr('');
+      setPassAgainErr("");
     }
   };
 
